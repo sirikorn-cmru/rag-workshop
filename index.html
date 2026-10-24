@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ผู้ช่วยระเบียบบริษัท นาวา ดิจิทัล</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 3 columns — คลังเอกสาร | แชทถามตอบ | หลักฐานที่ใช้ตอบ. Stacks on phones. */
+:root{
+  --bg:#f4f6f8; --panel:#ffffff; --fg:#14213a; --muted:#5d6b82; --line:#dfe5ec;
+  --accent:#1c4e80; --accent-soft:#e3edf7; --ok:#1f7a4d; --ok-soft:#dff3e8; --warn:#a15c07; --warn-soft:#fbeed6;
+  --user:#1c4e80; --user-fg:#ffffff;
+  --font:'IBM Plex Sans Thai','Noto Sans Thai',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1522; --panel:#162033; --fg:#e6ecf5; --muted:#93a1b8; --line:#26334a;
+  --accent:#6ea8e6; --accent-soft:#1b2d46; --ok:#5fcf97; --ok-soft:#173629; --warn:#f0b35a; --warn-soft:#3a2c14;
+  --user:#2f6bb0; --user-fg:#fff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1522; --panel:#162033; --fg:#e6ecf5; --muted:#93a1b8; --line:#26334a;
+  --accent:#6ea8e6; --accent-soft:#1b2d46; --ok:#5fcf97; --ok-soft:#173629; --warn:#f0b35a; --warn-soft:#3a2c14;
+  --user:#2f6bb0; --user-fg:#fff; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.6;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px}
+.app{display:grid;grid-template-columns:260px minmax(0,1fr) 340px;gap:16px;height:100%;min-height:560px;max-width:1500px;margin:0 auto}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-width:0;min-height:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* sidebar */
+.side{padding:16px;gap:14px;overflow:auto}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:36px;height:36px;border-radius:8px;background:var(--accent);display:grid;place-items:center}
+.brand b{display:block;font-size:15px;line-height:1.3}.brand span{font-size:12px;color:var(--muted)}
+.new{width:100%;padding:9px;border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent);border-radius:8px;font-weight:600}
+.h{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.02em;margin:6px 0 4px}
+.side ul{list-style:none;margin:0;padding:0}
+.q-item{width:100%;text-align:left;background:none;border:0;padding:6px 8px;border-radius:6px;color:var(--fg)}
+.q-item:hover,.q-item[aria-current="true"]{background:var(--accent-soft)}
+.dept{display:flex;justify-content:space-between;padding:5px 8px;font-size:14px}
+.dept i{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+.sup{font-size:12px;color:var(--muted);padding:0 8px}
+/* chat */
+.chat-h{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.chat-h h1{font-size:18px;margin:0}.chat-h span{font-size:12.5px;color:var(--muted)}
+.msgs{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:16px;min-height:0}
+.me{align-self:flex-end;background:var(--user);color:var(--user-fg);padding:8px 16px;border-radius:18px 18px 4px 18px;max-width:80%;overflow-wrap:anywhere}
+.bot{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:92%;display:flex;flex-direction:column;gap:10px}
+.bot p{margin:0}
+.cite{font-family:var(--mono);font-size:11px;background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+.src{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.src small{color:var(--muted);font-weight:600}
+.src div{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.src b{font-family:var(--mono);font-size:12px}
+.tag{font-size:11px;border-radius:4px;padding:0 6px;background:var(--ok-soft);color:var(--ok)}
+.tag.w{background:var(--warn-soft);color:var(--warn)}
+.fb{display:flex;gap:6px}
+.fb button{border:1px solid var(--line);background:none;border-radius:6px;padding:2px 10px;font-size:13px;color:var(--muted)}
+.fb button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.typing{color:var(--muted);font-size:13px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 14px;font-size:13.5px}
+.chips button:hover{border-color:var(--accent);color:var(--accent)}
+.compose{border-top:1px solid var(--line);padding:12px 20px 10px}
+.compose form{display:flex;gap:8px}
+.compose input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:10px 14px;font:inherit}
+.compose .go{width:44px;border:0;border-radius:10px;background:var(--accent);color:var(--bg);font-size:18px;font-weight:700}
+.compose p{margin:6px 0 0;text-align:center;font-size:11.5px;color:var(--muted)}
+/* evidence */
+.ev{overflow:auto}
+.ev-h{padding:14px 16px;border-bottom:1px solid var(--line)}
+.ev-h b{font-size:15px}.ev-h p{margin:0;font-size:12px;color:var(--muted)}
+.cards{padding:12px;display:flex;flex-direction:column;gap:12px}
+.card{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card .top{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);align-items:center}
+.card h3{margin:0;font-size:14px;line-height:1.4}
+.card .meta{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.card p{margin:0;font-size:13px;color:var(--fg)}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}
+.empty{padding:24px 16px;color:var(--muted);font-size:13.5px}
+@media (max-width:1100px){.app{grid-template-columns:220px minmax(0,1fr);height:auto}.ev{grid-column:1/-1;max-height:420px}.chat{min-height:560px}}
+@media (max-width:700px){.app{grid-template-columns:minmax(0,1fr)}.side{max-height:none}.msgs{max-height:60vh}.bot{max-width:100%}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{color-scheme:light}body{margin:0}
+</style>
+
+</head>
+<body>
+<div class="app">
+  <aside class="col side" aria-label="คลังเอกสาร">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 18l8-14 8 14M8 18h8"/></svg></div>
+      <div><b>นาวา ดิจิทัล</b><span>ผู้ช่วยระเบียบบริษัท</span></div>
+    </div>
+    <button class="new" id="newBtn">+ เริ่มคำถามใหม่</button>
+    <div><div class="h">คำถามในรอบนี้</div><ul id="history"></ul></div>
+    <div>
+      <div class="h">เอกสารที่ใช้ตอบ · 22 ฉบับ</div>
+      <div class="dept"><span>ทรัพยากรบุคคล</span><i>7</i></div>
+      <div class="dept"><span>เทคโนโลยีสารสนเทศ</span><i>5</i></div>
+      <div class="dept"><span>การเงิน</span><i>4</i></div>
+      <div class="dept"><span>บริการลูกค้า</span><i>2</i></div>
+      <div class="dept"><span>อาคารสถานที่</span><i>2</i></div>
+      <div class="dept"><span>คุ้มครองข้อมูล</span><i>2</i></div>
+      <div class="sup" style="margin-top:8px">ไม่นำฉบับเดิม (superseded) 2 ฉบับมาตอบ</div>
+    </div>
+  </aside>
+
+  <main class="col chat">
+    <div class="chat-h"><h1>ถามระเบียบบริษัท</h1><span>ตอบจากเอกสารภายในเท่านั้น และอ้างอิงทุกข้อเท็จจริง</span></div>
+    <div class="msgs" id="msgs" aria-live="polite"></div>
+    <div class="compose">
+      <form id="form"><input id="q" autocomplete="off" placeholder="พิมพ์คำถาม เช่น ลาพักร้อนได้กี่วัน" aria-label="คำถาม"><button class="go" type="submit" aria-label="ส่ง">→</button></form>
+      <p>คำตอบอ้างอิงเอกสารภายในเท่านั้น เรื่องสำคัญควรยืนยันกับฝ่ายที่เกี่ยวข้องอีกครั้ง</p>
+    </div>
+  </main>
+
+  <aside class="col ev" aria-label="หลักฐานที่ใช้ตอบ">
+    <div class="ev-h"><b>หลักฐานที่ใช้ตอบ</b><p id="evSub">คำตอบจะแสดงข้อความต้นฉบับที่นี่</p></div>
+    <div class="cards" id="cards"><div class="empty">ถามคำถามแรก แล้วดูว่าระบบดึงข้อความจากเอกสารฉบับไหนมาตอบ</div></div>
+  </aside>
+</div>
+
+<script>
+/* ข้อมูลจำลอง (mock) แทนผลลัพธ์จาก RAG pipeline */
+const KB=[
+ {id:'leave',keys:['ลา','พักร้อน','วันหยุด'],q:'ลาพักร้อนได้กี่วัน',
+  a:[['พนักงานที่ผ่านทดลองงานแล้วลาพักร้อนได้ 12 วันทำการต่อปี ถ้ามีอายุงานตั้งแต่ 5 ปีขึ้นไปได้ 15 วันทำการต่อปี','HR-01#2'],
+     ['ระหว่างทดลองงาน 119 วันยังไม่มีสิทธิ์ลาพักร้อน แต่ลาป่วยและลากิจได้ตามระเบียบ','HR-05#2'],
+     ['วันที่ใช้ไม่หมดสะสมไปปีถัดไปได้ไม่เกิน 6 วัน และต้องยื่นลาใน HR Portal ล่วงหน้าอย่างน้อย 3 วันทำการ ถ้าลาติดกันเกิน 5 วันทำการต้องยื่นล่วงหน้า 14 วัน','HR-01#2']],
+  src:[['HR-01','ระเบียบการลา','3.0','2026-01-01',1],['HR-05','คู่มือพนักงานใหม่','2.1','2026-03-01',1]],
+  ev:[['HR-01#2',100,'ระเบียบการลา · หมวดลาพักร้อน','HR-01','พนักงานที่ผ่านทดลองงานมีสิทธิ์ลาพักร้อน 12 วันทำการต่อปี อายุงานครบ 5 ปีเพิ่มเป็น 15 วันทำการ สะสมได้ไม่เกิน 6 วัน'],
+      ['HR-05#2',68,'คู่มือพนักงานใหม่ · ช่วงทดลองงาน','HR-05','ระหว่างทดลองงาน 119 วันยังไม่มีสิทธิ์ลาพักร้อน ลาป่วยและลากิจได้ตามระเบียบการลา']]},
+ {id:'fit',keys:['ฟิตเนส','ฟัน','สุขภาพ','สวัสดิการ','แว่น'],q:'เบิกค่าฟิตเนสได้เท่าไร',
+  a:[['เบิกค่าสมาชิกฟิตเนสหรือคลาสออกกำลังกายได้ 1,000 บาทต่อเดือน','HR-03#4'],
+     ['นอกจากนี้พนักงานและครอบครัวใช้บริการปรึกษาสุขภาพจิตออนไลน์ฟรี 6 ครั้งต่อปี โดยบริษัทไม่ทราบชื่อผู้ใช้บริการ','HR-03#4']],
+  src:[['HR-03','สวัสดิการพนักงาน','2026','2026-01-01',1]],
+  ev:[['HR-03#4',100,'สวัสดิการพนักงาน · สุขภาพและความเป็นอยู่','HR-03','เบิกค่าสมาชิกฟิตเนสหรือคลาสออกกำลังกายได้ 1,000 บาทต่อเดือน พนักงานและครอบครัวปรึกษาสุขภาพจิตออนไลน์ได้ฟรี 6 ครั้ง'],
+      ['HR-03#3',71,'สวัสดิการพนักงาน · กองทุนสำรองเลี้ยงชีพ','HR-03','พนักงานเลือกสะสมได้ 3–10% ของเงินเดือน บริษัทสมทบเท่ากับที่พนักงานสะสม สูงสุด 5%'],
+      ['HR-03#2',52,'สวัสดิการพนักงาน · กันตกรรมและสายตา','HR-03','ค่าทำฟัน ขูดหินปูน อุดฟัน ถอนฟัน เบิกได้รวม 3,000 บาทต่อปี ค่าแว่นสายตาหรือคอนแทกต์เลนส์ เบิกได้ 2,500 บาท ทุก 2 ปี'],
+      ['HR-03#1',49,'สวัสดิการพนักงาน · ประกันสุขภาพกลุ่ม','HR-03','ผู้ป่วยนอก (OPD) เบิกได้ครั้งละไม่เกิน 2,000 บาท ไม่เกิน 30 ครั้งต่อปี ผู้ป่วยใน (IPD) ค่าห้องไม่เกิน 4,000 บาทต่อคืน']]},
+ {id:'vpn',keys:['vpn','รหัสผ่าน','password','ลืม','ล็อกอิน','เข้าระบบ'],q:'ลืมรหัสผ่าน VPN ทำอย่างไร',
+  a:[['รีเซ็ตรหัสผ่านเองได้ที่พอร์ทัล IT Self-Service โดยยืนยันตัวตนด้วยแอป Authenticator','IT-02#3'],
+     ['ถ้ายืนยันตัวตนไม่ได้ ให้เปิดคำขอกับ IT Helpdesk ภายในเวลาทำการ ระบบจะส่งรหัสชั่วคราวที่หมดอายุใน 24 ชั่วโมง','IT-02#5']],
+  src:[['IT-02','นโยบายบัญชีผู้ใช้และการเข้าถึง','1.4','2026-02-15',1]],
+  ev:[['IT-02#3',96,'นโยบายบัญชีผู้ใช้ · การรีเซ็ตรหัสผ่าน','IT-02','ผู้ใช้รีเซ็ตรหัสผ่านเองได้ที่ IT Self-Service โดยต้องยืนยันตัวตนด้วยแอป Authenticator'],
+      ['IT-02#5',74,'นโยบายบัญชีผู้ใช้ · กรณียืนยันตัวตนไม่ได้','IT-02','เปิดคำขอกับ IT Helpdesk รหัสชั่วคราวมีอายุ 24 ชั่วโมงและต้องเปลี่ยนทันทีเมื่อเข้าสู่ระบบ']]},
+ {id:'travel',keys:['เดินทาง','ค่าใช้จ่าย','ใบเสร็จ','เบิก','โรงแรม'],q:'เบิกค่าเดินทางต้องแนบอะไร',
+  a:[['ต้องแนบใบเสร็จหรือใบกำกับภาษีฉบับจริง พร้อมแบบฟอร์มขออนุมัติเดินทางที่หัวหน้าลงนามแล้ว','FIN-02#1'],
+     ['ยื่นเบิกภายใน 30 วันนับจากวันเดินทางกลับ มิฉะนั้นถือว่าสละสิทธิ์','FIN-02#4']],
+  src:[['FIN-02','ระเบียบการเบิกจ่ายค่าเดินทาง','2.2','2026-04-01',1],['FIN-02a','ระเบียบเดิม','1.9','2024-01-01',0]],
+  ev:[['FIN-02#1',94,'ระเบียบเบิกจ่าย · เอกสารประกอบ','FIN-02','แนบใบเสร็จหรือใบกำกับภาษีฉบับจริงและแบบฟอร์มขออนุมัติเดินทางที่หัวหน้าลงนามแล้ว'],
+      ['FIN-02#4',81,'ระเบียบเบิกจ่าย · กำหนดเวลา','FIN-02','ยื่นเบิกภายใน 30 วันนับจากวันเดินทางกลับ มิฉะนั้นถือว่าสละสิทธิ์']]}
+];
+const msgs=document.getElementById('msgs'),cards=document.getElementById('cards'),hist=document.getElementById('history');
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+function showEv(k){
+  document.getElementById('evSub').textContent=k?`ค้นเจอ ${k.ev.length} ส่วนจากเอกสาร · การ์ดเรียงตามความเกี่ยวข้อง`:'คำตอบจะแสดงข้อความต้นฉบับที่นี่';
+  cards.innerHTML='';
+  if(!k){cards.append(el('div','empty','ไม่พบส่วนของเอกสารที่เกี่ยวข้องพอจะใช้ตอบ'));return}
+  k.ev.forEach(e=>cards.append(el('div','card',
+   `<div class="top"><span class="cite" style="margin:0">${e[0]}</span><span>ความเกี่ยวข้อง ${e[1]}%</span></div>
+    <div class="bar"><i style="width:${e[1]}%"></i></div><h3>${e[2]}</h3>
+    <div class="meta">${e[3]} · ฉบับ 2026</div><p>${e[4]}</p>`)));
+}
+function ask(text){
+  text=text.trim();if(!text)return;
+  const lower=text.toLowerCase();
+  const hit=KB.map(k=>({k,s:k.keys.filter(w=>lower.includes(w)).length})).sort((a,b)=>b.s-a.s)[0];
+  const k=hit.s>0?hit.k:null;
+  msgs.append(el('div','me',esc(text)));
+  const t=el('div','bot typing','กำลังค้นเอกสารที่เกี่ยวข้อง…');msgs.append(t);scroll();
+  const li=el('li');const b=el('button','q-item',esc(text));b.onclick=()=>{ t.scrollIntoView({block:'center'});showEv(k)};li.append(b);hist.append(li);
+  setTimeout(()=>{
+    t.className='bot';
+    if(!k){t.innerHTML='<p>ไม่พบข้อมูลเรื่องนี้ในเอกสารที่มีอยู่ จึงไม่ขอเดาคำตอบ ลองถามเรื่องการลา สวัสดิการ รหัสผ่าน หรือการเบิกค่าเดินทาง หรือติดต่อฝ่ายที่เกี่ยวข้องโดยตรง</p>'}
+    else{
+      t.innerHTML=k.a.map(x=>`<p>${x[0]}<span class="cite">${x[1]}</span></p>`).join('')+
+       `<div class="src"><small>แหล่งอ้างอิง</small>${k.src.map(s=>`<div><b>${s[0]}</b> ${s[1]} <span style="color:var(--muted)">ฉบับ ${s[2]} · มีผล ${s[3]}</span> <span class="tag ${s[4]?'':'w'}">${s[4]?'มีผลบังคับใช้':'ฉบับเดิม ไม่ใช้ตอบ'}</span></div>`).join('')}</div>`+
+       `<div class="fb"><button aria-pressed="false">มีประโยชน์</button><button aria-pressed="false">ไม่ตรงคำถาม</button></div>`;
+      t.querySelectorAll('.fb button').forEach(x=>x.onclick=()=>{t.querySelectorAll('.fb button').forEach(y=>y.setAttribute('aria-pressed','false'));x.setAttribute('aria-pressed','true')});
+    }
+    showEv(k);scroll();
+  },700);
+}
+function start(){
+  msgs.innerHTML='';hist.innerHTML='';showEv(null);
+  const w=el('div','bot','<p>สวัสดีครับ ผมตอบคำถามเรื่องระเบียบและสวัสดิการของนาวา ดิจิทัล จากเอกสารภายใน 22 ฉบับ ลองเลือกคำถามด้านล่างหรือพิมพ์เองได้เลย</p>');
+  const c=el('div','chips');KB.forEach(k=>{const b=el('button','',k.q);b.onclick=()=>ask(k.q);c.append(b)});
+  w.append(c);msgs.append(w);
+}
+document.getElementById('form').onsubmit=e=>{e.preventDefault();const i=document.getElementById('q');ask(i.value);i.value=''};
+document.getElementById('newBtn').onclick=start;
+start();ask('ลาพักร้อนได้กี่วัน');
+</script>
+
+</body>
+</html>
