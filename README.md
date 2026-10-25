@@ -1,8 +1,14 @@
-# rag-workshop: ผู้ช่วยระเบียบบริษัท นาวา ดิจิทัล
+# RAG Workshop · Claude Code + GitHub (ไม่ใช้ API credit)
 
-หน้าเว็บถามตอบระเบียบบริษัท (การบ้านที่ 6) ใช้ข้อมูลจำลองแสดงคำตอบ แหล่งอ้างอิง และหลักฐานจากเอกสาร
+ระบบถามตอบเอกสารบริษัทสมมติ "นาวา ดิจิทัล" สร้างด้วย Claude Code
+การค้นคืนทำงานในเครื่องด้วย Python ส่วนการเขียนคำตอบทำโดย Claude Code ผ่าน skill `/ask`
 
-## เปิดผ่าน GitHub Pages
-1. Settings > Pages
-2. Source: Deploy from a branch, Branch: main, Folder: /(root)
-3. ลิงก์: https://<username>.github.io/<repo>/
+```bash
+pip install -r requirements.txt
+pytest -q
+python -m rag.retrieve "เบิกค่าทำฟันได้เท่าไร" -k 4
+```
+
+ใน Claude Code: `/ask ทำงานจากที่บ้านได้กี่วัน` · `/ask-eval dev 10`
+
+ข้อมูลทั้งหมดเป็นของสมมติ
